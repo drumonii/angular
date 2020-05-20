@@ -227,6 +227,30 @@ export class Validators {
 
   /**
    * @description
+   * Validator that requires the control's value be false.
+   *
+   * @usageNotes
+   *
+   * ### Validate that the field value is false
+   *
+   * ```typescript
+   * const control = new FormControl(true, Validators.requiredFalse);
+   *
+   * console.log(control.errors); // {required: false}
+   * ```
+   *
+   * @returns An error map that contains the `required` property
+   * set to `false` if the validation check fails, otherwise `null`.
+   *
+   * @see `updateValueAndValidity()`
+   *
+   */
+  static requiredFalse(control: AbstractControl): ValidationErrors|null {
+    return control.value === false ? null : {'required': false};
+  }
+
+  /**
+   * @description
    * Validator that requires the control's value pass an email validation test.
    *
    * Tests the value using a [regular

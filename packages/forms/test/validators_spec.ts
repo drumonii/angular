@@ -177,6 +177,14 @@ describe('Validators', () => {
        () => expect(Validators.requiredTrue(new FormControl(true))).toBeNull());
   });
 
+  describe('requiredFalse', () => {
+    it('should error on true',
+       () => expect(Validators.requiredFalse(new FormControl(true))).toEqual({'required': false}));
+
+    it('should not error on false',
+       () => expect(Validators.requiredFalse(new FormControl(false))).toBeNull());
+  });
+
   describe('email', () => {
     it('should not error on an empty string',
        () => expect(Validators.email(new FormControl(''))).toBeNull());
